@@ -1,0 +1,57 @@
+footer{
+    
+    margin-top:10vmax;
+    padding: 2vmax;
+    background-color:rgb(19, 17, 17);
+    color : white;
+    display:flex;
+    align-items: center;
+    font-family: "Roboto";
+}
+
+.leftfooter{
+    display:flex;
+    width:50%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.leftfooter h4{ 
+   font-size: 2vmax;
+   margin:0px;
+}
+
+.leftfooter p { 
+    font-size:1.5vmax;
+    text-align:center;
+}
+
+.leftfooter img{ 
+    width:15vmax;
+    margin:2px;
+    cursor:pointer;
+}
+
+.rightfooter{
+
+    margin : 10px auto;
+    width:30%;
+    text-align:center;
+}
+
+.rightfooter h4{
+    font-size: 3vmax;
+    color: #ff6347;
+    margin: 0px;
+    
+}
+
+.rightfooter h5{
+    font-size: 1.5vmax;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.rightfooter p{
+    font-size: 1vmax;
+}
