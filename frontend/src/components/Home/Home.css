@@ -92,7 +92,7 @@
 }
 
 .productCard div span{
-    font: 300 0.7vmax "Roboto";
+    font: 300 1vmax "Roboto";
     
     
 }
@@ -128,7 +128,7 @@
      }
      .productCard > div > span {
          margin: 0 0.5vmax;
-         font-size:1.2vmax;
+         font-size:1.3vmax;
      }
      
  }

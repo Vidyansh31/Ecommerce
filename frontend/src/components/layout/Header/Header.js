@@ -29,6 +29,7 @@ const options = {
   searchIconMargin:"1vmax",
   profileIconMargin:"1vmax",
   cartIconMargin:"1vmax",
+  profileIconUrl:"/login",
   searchIconColorHover:"#ff6347",  
   profileIconColorHover:"#ff6347",  
   cartIconColorHover:"#ff6347",  

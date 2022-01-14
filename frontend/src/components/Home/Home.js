@@ -1,43 +1,58 @@
-import React from 'react';
-import { CgMouse } from 'react-icons/all';
+import React, { Fragment, useEffect } from "react";
+import { CgMouse } from "react-icons/all";
 import "./Home.css";
-import Product from './Product.js'
+import Product from "./ProductCard.js";
+import MetaData from "../layout/MetaData";
+import Loader from "../layout/Loader/Loader";
+import { getProducts,clearErrors } from "../../actions/productAction";
+import { useDispatch, useSelector } from "react-redux";
 
-const product = {
-    name:"Swift 16ltr",
-    images:[{url:"https://i.ibb.co/pxTmTjY/product1.jpg"}],
-    _id:"product1",
-    price:"₹3000"
-}
+//To use alertTemplate
+import { useAlert } from "react-alert";
 
 const Home = () => {
-    return (
-        <>
-            <div className="banner">
-                <p>Welcome to Aquafresh</p>
-                <h1>FIND AMAZING PRODUCTS BELOW</h1>
+  const alert = useAlert();
+  const dispatch = useDispatch();
 
-                <a href="#container">
-                    <button>
-                        Scroll <CgMouse />
-                    </button>
-                </a>
-            </div>
-            
-            <h2 className="homeHeading">Featured Products</h2>
-            <div className="container" id="container">
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                
-            </div>
-        </>
-    )
-}
+  const { loading, error, products } = useSelector((state) => state.products);
 
-export default Home
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+       dispatch(clearErrors())
+    }
+    dispatch(getProducts());
+  }, [dispatch, error,alert]);
+
+  return (
+    <Fragment>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          <MetaData title="AquaFresh" />
+          <div className="banner">
+            <p>Welcome to Aquafresh</p>
+            <h1>FIND AMAZING PRODUCTS BELOW</h1>
+
+            <a href="#container">
+              <button>
+                Scroll <CgMouse />
+              </button>
+            </a>
+          </div>
+
+          <h2 className="homeHeading">Featured Products</h2>
+          <div className="container" id="container">
+            {products &&
+              products.map((product) => (
+                <Product key={product._id} product={product} />
+              ))}
+          </div>
+        </Fragment>
+      )}
+    </Fragment>
+  );
+};
+
+export default Home;
